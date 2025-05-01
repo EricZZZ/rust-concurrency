@@ -75,19 +75,19 @@ async fn main() {
     // blocking_task.await.unwrap();
     // 记录运行时间
     let start = std::time::Instant::now();
-    let nums = vec![1; 1024 * 1024 * 1024];
+    let nums = vec![1; 1024 * 1024 * 10];
     println!("Sum: {}", parallel_sum(nums).await);
     let end = std::time::Instant::now();
     println!("Tokio blocking Time elapsed: {:?}", end - start);
     // 记录运行时间
     let start = std::time::Instant::now();
-    let nums = vec![1; 1024 * 1024 * 1024];
+    let nums = vec![1; 1024 * 1024 * 10];
     println!("Sum: {}", parallel_sum_with_rayon(nums).await);
     let end = std::time::Instant::now();
     println!("Tokio blocking with rayon Time elapsed: {:?}", end - start);
     // 记录运行时间
     let start = std::time::Instant::now();
-    let nums = vec![1; 1024 * 1024 * 1024];
+    let nums = vec![1; 1024 * 1024 * 10];
     println!("Sum: {}", parallel_sum_thread(nums));
     let end = std::time::Instant::now();
     println!("std Thread  Time elapsed: {:?}", end - start);
