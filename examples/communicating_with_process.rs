@@ -1,7 +1,7 @@
 use std::io::{self, BufRead};
 use std::process;
 
-fn main(){
+fn main() {
     let pid = process::id();
     println!("process ID: {}", pid);
 
