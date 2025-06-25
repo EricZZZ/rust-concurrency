@@ -2,6 +2,8 @@ use std::{
     fs,
     io::{prelude::*, BufReader},
     net::{TcpListener, TcpStream},
+    thread,
+    time::Duration,
 };
 fn main() {
     // 监听地址：127.0.0.1:8787
@@ -16,9 +18,16 @@ fn main() {
 
 fn handle_connection(mut stream: TcpStream) {
     let buf_reader = BufReader::new(&mut stream);
-    let request_line = buf_reader.lines().next().unwrap().unwrap();
+    let request_line = buf_reader
+        .lines()
+        .next()
+        .unwrap_or_else(|| Ok(String::from("")))
+        .unwrap();
 
     let (status_line, filename) = if request_line == "GET / HTTP/1.1" {
+        ("HTTP/1.1 200 OK", "hello.html")
+    } else if request_line == "GET /sleep HTTP/1.1" {
+        thread::sleep(Duration::from_secs(5));
         ("HTTP/1.1 200 OK", "hello.html")
     } else {
         ("HTTP/1.1 404 NOT FOUND", "404.html")

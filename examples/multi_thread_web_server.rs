@@ -11,7 +11,7 @@ fn main() {
     // 监听地址：127.0.0.1:8787
     let listener = TcpListener::bind("127.0.0.1:8787").unwrap();
     let pool = ThreadPool::new(4);
-    for stream in listener.incoming().take(2) {
+    for stream in listener.incoming() {
         match stream {
             Ok(stream) => {
                 pool.execute(|| handle_connection(stream));

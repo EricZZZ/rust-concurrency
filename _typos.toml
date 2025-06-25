@@ -1,4 +1,6 @@
 [default.extend-words]
+wrk = "wrk"
+
 
 [files]
 extend-exclude = ["CHANGELOG.md", "notebooks/*"]
