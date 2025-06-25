@@ -41,8 +41,3 @@ async fn handle_connection(mut stream: TcpStream) {
     let response = format!("{status_line}\r\nContent-Length: {length}\r\n\r\n{contents}");
     let _ = stream.write_all(response.as_bytes()).await;
 }
-
-#[test]
-fn test() {
-    assert_eq!(1, 1);
-}
