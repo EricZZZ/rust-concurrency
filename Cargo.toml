@@ -42,3 +42,5 @@ clearscreen = "4.0.1"
 device_query = "1.1.3"
 futures = "0.3.28"
 threadpool = "1.8.1"
+async-std = { version = "1.13.2", features = ["unstable"] }
+surf = "2.0"
